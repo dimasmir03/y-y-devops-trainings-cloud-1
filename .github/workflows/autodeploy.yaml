@@ -20,6 +20,6 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
           VM_ID: ${{secrets.VM_ID}}
         run: |
-	  echo ${{ secrets.YC_SA_JSON_CREDENTIALS } } | docker login --username json_key --password-stdin cr.yandex
+          echo "${{ secrets.YC_SA_JSON_CREDENTIALS }}" | docker login --username json_key --password-stdin cr.yandex
           docker build -t cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG .
           docker push cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG
