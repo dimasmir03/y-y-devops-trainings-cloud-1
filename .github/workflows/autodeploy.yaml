@@ -11,12 +11,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Yandex Cloud login
-        uses: yc-actions/yc-cr-login@v1
-        with:
-          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        uses: actions/checkout@v2}
       -
         name: Build, tag, and push image to Yandex Cloud Container Registry
         env:
@@ -25,5 +20,6 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
           VM_ID: ${{secrets.VM_ID}}
         run: |
+	  echo ${ secrets.YC_SA_JSON_CREDENTIALS  } | docker login --username json_key --password-stdin cr.yandex
           docker build -t cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG .
           docker push cr.yandex/$CR_REGISTRY/$CR_REPO:$IMAGE_TAG
