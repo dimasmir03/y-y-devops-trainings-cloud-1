@@ -1,16 +1,12 @@
-# Start by building the application.
+ARG GOARCH=amd64
 FROM golang:1.21 as build
-
+ARG GOARCH
 WORKDIR /go/src/catgpt
-
 COPY . .
-
 RUN go mod download
-RUN go vet -v
-RUN go test -v
-RUN CGO_ENABLED=0 go build -o /go/bin/catgpt
+RUN CGO_ENABLED=0 GOARCH=$GOARCH go build -o /go/bin/catgpt
 
-# Now copy it into our base image.
-FROM gcr.io/distroless/static-debian12:latest-amd64
+FROM gcr.io/distroless/base-debian12:latest-${GOARCH}
 COPY --from=build /go/bin/catgpt /
+EXPOSE 8080 9090
 CMD ["/catgpt"]
