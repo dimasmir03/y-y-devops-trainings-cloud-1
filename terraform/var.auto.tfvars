@@ -1,0 +1,8 @@
+cloud_id           = "b1g0vh6uspd0m39d5er6"
+folder_id          = "b1g4063p3a506fhtm24n"
+vm_user            = ""
+service_account_id = "ajep7qi22jf7jm9p50nb"
+ssh_key            = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5iGZHrYdkf4Wt5NKYSmwIL67vSoiL37fQvZV1ylpw6Rq354mMWpszI303mT0d/d7tOqtY7T9"
+oauth_token        = "y0_AgAAAABItsdMAATuwQAAAADxZ2xJoX2oUfwtQaGnAJluyZhKNHsSl4g"
+network_id         = "enp7sboaqaa6h44vm636"
+subnet_id_1        = "e9bbsc8gfc6qodbfa6ol"
